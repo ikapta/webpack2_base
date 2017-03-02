@@ -23,8 +23,9 @@ var TEM_PATH = path.resolve(ROOT_PATH, 'src/pages')
 var clearBuild = function () {
   if (isproduction) {
     rm('-rf', BUILD_PATH)
-    mkdir('-p', BUILD_PATH)
-    // cp('-R', ASSET_PATH+'/img/*', BUILD_PATH)
+    // mkdir('-p', BUILD_PATH)
+    mkdir('-p', BUILD_PATH + '/static/')
+    cp('-R', TEM_PATH + '/static/*', BUILD_PATH + '/static/')
   }
 }();
 
@@ -38,10 +39,10 @@ module.exports = {
     publicPath: '/',
     filename: 'js/[name].[hash:7].js'
   },
-  devtool: '#eval-source-map',
   devServer: {
-    contentBase: isproduction ? path.join(__dirname, "build") : path.join(__dirname, "src"),
+    contentBase: isproduction ? path.join(__dirname, "build") : path.join(__dirname, "build"),
     compress: true,
+    host:'0.0.0.0',
     stats: {
       hot: true,
       inline: true,
@@ -77,9 +78,7 @@ module.exports = {
           use: [{
               loader: "css-loader"
             },
-            {
-              loader: 'sass-loader'
-            }, {
+             {
               loader: 'postcss-loader',
               options: {
                 plugins: function () {
@@ -89,6 +88,9 @@ module.exports = {
                   ];
                 }
               }
+            },
+            {
+              loader: 'sass-loader'
             }
           ],
           fallback: "style-loader"
@@ -100,6 +102,25 @@ module.exports = {
         include: ASSET_PATH,
         exclude: /node_modules/
       },
+      //     {
+      //   test: /.*\.(gif|png|jpe?g|svg)$/i,
+      //   loaders: [
+      //     'file-loader',
+      //     {
+      //       loader: 'image-webpack-loader',
+      //       query: {
+      //         progressive: true,
+      //         optimizationLevel: 7,
+      //         interlaced: false,
+      //         pngquant: {
+      //           quality: '65-90',
+      //           speed: 4
+      //         }
+      //       }
+      //     }
+      //   ]
+      // },
+
       {
         test: /\.(jpe?g|png|gif|svg)$/,
         loader: 'url-loader',
@@ -132,30 +153,46 @@ function MakePlugins() {
   var pg = [extractSass];
   if (isproduction) {
     pg.push(new webpack.optimize.UglifyJsPlugin({
-      beautify: true, // 添加适当的空格和换行
+      beautify: false, // 添加适当的空格和换行
       compress: { // 开启代码压缩，包括DCE等
         warnings: false, // 当因为副作用等原因DCE失败时，会在命令行中给出警告
         drop_console: false, // 不用解释了吧
       },
       output: {
-        comments: true
+        comments: false
       }, // 保留注释，方便寻找`unused harmony`标签
-      mangle: true // 禁用变量混淆，以方便分析
+      mangle: false // 禁用变量混淆，以方便分析
 
     }))
-    pg.push(new htmlWebpackPlugin({
+  } 
+   pg.push(new htmlWebpackPlugin({
       filename: './index.html',
       template: path.resolve(TEM_PATH, 'index.html'),
       inject: true,
       chunks: ['index'],
       chunksSortMode: 'dependency'
     }))
-  } else {
-    pg.push(new htmlWebpackPlugin({
-      filename: './index.html',
-      template: path.resolve(TEM_PATH, 'index.html'),
-      inject: true,
-    }))
-  }
   return pg;
+}
+
+// 自动打开浏览器
+!isproduction && opnWeb();
+function opnWeb(){
+   var uri = getIpv4() + '9000';
+   console.log(chalk.yellow.underline.bold('Listening at ' + uri + '\n'))
+   opn(uri)
+};
+
+function getIpv4() {
+    var os = require('os'),
+        osIPv4,
+        ifaces = os.networkInterfaces();
+    for (var dev in ifaces) {
+        ifaces[dev].forEach(function (details, alias) {
+            if (details.family == 'IPv4' && details.address != '127.0.0.1') {
+                osIPv4 = details.address;
+            }
+        });
+    }
+    return typeof osIPv4 != undefined ? 'http://'+osIPv4+':' : 'http://localhost:';
 }

@@ -1,0 +1,304 @@
+/**
+ * Global Reset of all HTML Elements
+ *
+ * Resetting all of our HTML Elements ensures a smoother
+ * visual transition between browsers. If you don't believe me,
+ * try temporarily commenting out this block of code, then go
+ * and look at Mozilla versus Safari, both good browsers with
+ * a good implementation of CSS. The thing is, all browser CSS
+ * defaults are different and at the end of the day if visual
+ * consistency is what we're shooting for, then we need to
+ * make sure we're resetting all spacing elements.
+ *
+ */
+html * {
+  outline: 0;
+  box-sizing: border-box;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  border: 0;
+  font-family: "Helvetica-Neue", "Helvetica", Arial, sans-serif;
+  /*line-height: 1.5;*/
+  margin: 0;
+  padding: 0; }
+
+div, span, object, iframe, img, table, caption, thead, tbody, tfoot, tr, tr, td, article, aside, canvas, details, figure, hgroup, menu, nav, footer, header, section, summary, mark, audio, video {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cit, code, del, dfn, em, ins, q, samp, small, strong, sub, sup, b, i, hr, dl, dt, dd, ol, ul, li, fieldset, legend, label {
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: 500; }
+
+article, aside, canvas, figure, figure img, figcaption, hgroup, footer, header, nav, section, audio, video {
+  display: block; }
+
+table {
+  border-collapse: separate;
+  border-spacing: 0; }
+  table caption, table th, table td {
+    text-align: left;
+    vertical-align: middle; }
+
+li {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+a img {
+  border: 0; }
+
+:focus {
+  outline: 0; }
+
+* {
+  box-sizing: border-box; }
+
+input, select, textarea {
+  font-size: 100%; }
+
+textarea {
+  resize: none;
+  -webkit-appearance: none; }
+
+input {
+  -webkit-appearance: none; }
+
+select {
+  -webkit-appearance: none;
+  background-color: #fff; }
+body {
+  background-color: #fdfdfd;
+  font-family: Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, WenQuanYi Micro Hei, Microsoft Yahei, sans-serif; }
+
+.container {
+  background-color: #fdfdfd;
+  width: 100%;
+  margin-top: 30px; }
+
+.w1200, section .banner .banner-wrap, .rs-road .box-mid-wx, .rs-road .box-mid-app, .rs-ruler .ruler-wrap {
+  width: 1200px;
+  margin: 0 auto; }
+
+header {
+  height: 60px;
+  background-color: #fff;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0px 1px 10px #ccc; }
+  header .w1200, header section .banner .banner-wrap, section .banner header .banner-wrap, header .rs-road .box-mid-wx, .rs-road header .box-mid-wx, header .rs-road .box-mid-app, .rs-road header .box-mid-app, header .rs-ruler .ruler-wrap, .rs-ruler header .ruler-wrap {
+    height: 100%;
+    padding: 10px 0 10px 20px; }
+
+section .banner, section .banner .entry-btn, .rs-spec, .rs-road, .rs-ruler {
+  background-repeat: no-repeat;
+  background-position: center; }
+
+section .banner {
+  height: 610px;
+  padding-top: 30px;
+  background-image: url(/img/bg_banner.8e791e9.png);
+  background-position-y: -30px; }
+  section .banner .banner-wrap {
+    position: relative;
+    height: 100%; }
+  section .banner .entry-btn {
+    box-shadow: 0px 0px 4px #fff;
+    position: absolute;
+    width: 448px;
+    height: 339px;
+    background-image: url(/img/cov.ae5c76b.png);
+    bottom: -40px;
+    z-index: 10;
+    left: 80px;
+    text-align: center; }
+    section .banner .entry-btn button {
+      margin-top: 220px;
+      font-size: 30px;
+      color: #fa5d32;
+      cursor: pointer;
+      outline: none;
+      background-color: #fff;
+      border: 1px solid #fa5d32;
+      font-weight: lighter;
+      padding: 8px 30px;
+      border-radius: 4px; }
+
+section .banner-data {
+  box-shadow: 3px 5px 20px #bbb;
+  margin-top: 30px;
+  width: 899px;
+  height: 560px;
+  overflow: hidden;
+  position: absolute;
+  right: 0; }
+  section .banner-data .img-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform; }
+  section .banner-data .img-slide {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    box-shadow: 1px 1px 10px #ccc; }
+  section .banner-data img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 100%; }
+  section .banner-data .img-pagination {
+    position: absolute;
+    z-index: 2;
+    bottom: 10px;
+    right: 20px;
+    text-align: right;
+    width: 100%; }
+    section .banner-data .img-pagination .swiper-pagination-bullet {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      margin: 0 3px;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      cursor: pointer; }
+    section .banner-data .img-pagination .swiper-pagination-bullet-active {
+      background-color: #FFF; }
+
+.rs-spec {
+  background-image: url(/img/bg_spec.26d100c.png);
+  height: 307px;
+  text-align: center;
+  padding-top: 80px;
+  color: #696e77;
+  font-size: 26px; }
+  .rs-spec .card {
+    text-align: center;
+    display: inline-block;
+    margin-right: 100px; }
+    .rs-spec .card:last-child {
+      margin-right: 0; }
+
+.rs-road {
+  background-image: url(/img/bg_road.2c050b2.png);
+  height: 1009px;
+  padding-top: 120px; }
+  .rs-road .box-mid-wx {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 330px;
+    text-align: center; }
+    .rs-road .box-mid-wx .step img {
+      width: 100%;
+      height: 100%; }
+    .rs-road .box-mid-wx .step:nth-child(1) {
+      height: 233px;
+      width: 233px;
+      margin-left: 125px; }
+    .rs-road .box-mid-wx .step:nth-child(2) {
+      height: 300px;
+      width: 154px;
+      margin-left: 168px; }
+    .rs-road .box-mid-wx .step:nth-child(3) {
+      height: 300px;
+      width: 154px;
+      margin-left: 188px; }
+  .rs-road .box-mid-app {
+    margin-top: 140px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 330px;
+    text-align: center; }
+    .rs-road .box-mid-app .step img {
+      width: 100%;
+      height: 100%; }
+    .rs-road .box-mid-app .step:nth-child(1) {
+      height: 233px;
+      width: 233px;
+      margin-left: 265px; }
+    .rs-road .box-mid-app .step:nth-child(2) {
+      height: 300px;
+      width: 154px;
+      margin-left: 200px; }
+
+.rs-ruler {
+  background-image: url(/img/bg_ruler.cd26ba3.png);
+  height: 934px;
+  position: relative; }
+  .rs-ruler .ruler-wrap {
+    position: relative; }
+  .rs-ruler .ruler-text {
+    width: 800px;
+    font-size: 24px;
+    color: #696e77;
+    font-weight: 200;
+    padding-top: 235px;
+    text-indent: 2em;
+    padding-left: 80px; }
+  .rs-ruler .address-text {
+    position: absolute;
+    width: 1000px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    bottom: 78px;
+    padding-top: 25px; }
+    .rs-ruler .address-text img {
+      float: left;
+      margin-top: 18px;
+      margin-right: 40px; }
+    .rs-ruler .address-text p {
+      font-weight: lighter;
+      font-size: 26px;
+      color: #696e77; }
+      .rs-ruler .address-text p .tel {
+        font-size: 50px;
+        color: #fa5d32; }
+
+footer {
+  background-color: #696e77;
+  height: 70px;
+  line-height: 70px; }
+  footer .footer {
+    width: 975px;
+    margin: 0 auto;
+    color: #b5b5b5;
+    font-size: 26px;
+    text-align: center;
+    font-weight: lighter;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    footer .footer span {
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1; }

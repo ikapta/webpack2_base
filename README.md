@@ -2,6 +2,8 @@
 
 简洁的webpack2
 
+Branch mutEntry 是多入口配置
+
 ## Environment
 
 node: v4.6.0^
